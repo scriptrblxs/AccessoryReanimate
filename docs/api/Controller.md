@@ -37,12 +37,17 @@ The Humanoid instance belonging to the ghost rig. This is used to play animation
 ### params
 **Type:** [table](https://www.lua.org/pil/2.5.html)
 
-A table containing the configuration data passed through the constructor. This typically includes settings like `Netless`, `Fling`, or specific rig offsets.
+A table containing the configuration data passed through the constructor. This typically includes settings like `DisableCharacterByCFrame` and more in the future.
 
 ### parts
 **Type:** [table](https://www.lua.org/pil/2.5.html)
 
 A dictionary containing references to all active BaseParts managed by the controller, indexed by their specific role or limb name.
+
+### limbs
+**Type:** [table](https://www.lua.org/pil/2.5.html)
+
+Unused.
 
 ---
 
@@ -52,7 +57,7 @@ A dictionary containing references to all active BaseParts managed by the contro
 **Parameters:**
 - `character`: [Model](https://create.roblox.com/docs/reference/engine/classes/Model) — The source character model to replicate.
 
-Initializes the internal ghost rig. It maps the source character's proportions and hierarchy to create a functional reanimation base.
+Scans given character which must be the `LocalPlayer.Character` for 1x1x2 `Handle` accessories like the Pal Hair.
 
 ### :WeldToLimb(part, limbName, offset)
 **Parameters:**
