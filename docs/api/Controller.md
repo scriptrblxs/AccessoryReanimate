@@ -6,16 +6,16 @@ Creates the rig and handles accessories for it.
 ## Summary
 
 - Properties
- - ghost: [Model](https://create.roblox.com/docs/reference/engine/classes/Model)
- - ghrp: [BasePart](https://create.roblox.com/docs/reference/engine/classes/BasePart)
- - ghum: [Humanoid](https://create.roblox.com/docs/reference/engine/classes/Humanoid)
- - params: [table](https://www.lua.org/pil/2.5.html)
- - parts: [table](https://www.lua.org/pil/2.5.html)
- - ~~limbs: [table](https://www.lua.org/pil/2.5.html)~~
+  - ghost: [Model](https://create.roblox.com/docs/reference/engine/classes/Model)
+  - ghrp: [BasePart](https://create.roblox.com/docs/reference/engine/classes/BasePart)
+  - ghum: [Humanoid](https://create.roblox.com/docs/reference/engine/classes/Humanoid)
+  - params: [table](https://www.lua.org/pil/2.5.html)
+  - parts: [table](https://www.lua.org/pil/2.5.html)
+  - ~~limbs: [table](https://www.lua.org/pil/2.5.html)~~
 - Methods
- - :BuildBody(character: [Model](https://create.roblox.com/docs/reference/engine/classes/Model)): ()
- - :WeldToLimb(part: [BasePart](https://create.roblox.com/docs/reference/engine/classes/BasePart), limbName: [string](https://create.roblox.com/docs/luau/strings), offset: [CFrame](https://create.roblox.com/docs/reference/engine/datatypes/CFrame)): [RBXScriptConnection](https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection)
- - :MotorToLimb(part: [BasePart](https://create.roblox.com/docs/reference/engine/classes/BasePart), limbName: [string](https://create.roblox.com/docs/luau/strings), C0: [CFrame](https://create.roblox.com/docs/reference/engine/datatypes/CFrame), C1: [CFrame](https://create.roblox.com/docs/reference/engine/datatypes/CFrame)): [Motor6D](https://create.roblox.com/docs/reference/engine/classes/Motor6D), [RBXScriptConnection](https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection)
+  - :BuildBody(character: [Model](https://create.roblox.com/docs/reference/engine/classes/Model)): ()
+  - :WeldToLimb(part: [BasePart](https://create.roblox.com/docs/reference/engine/classes/BasePart), limbName: [string](https://create.roblox.com/docs/luau/strings), offset: [CFrame](https://create.roblox.com/docs/reference/engine/datatypes/CFrame)): [RBXScriptConnection](https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection)
+  - :MotorToLimb(part: [BasePart](https://create.roblox.com/docs/reference/engine/classes/BasePart), limbName: [string](https://create.roblox.com/docs/luau/strings), C0: [CFrame](https://create.roblox.com/docs/reference/engine/datatypes/CFrame), C1: [CFrame](https://create.roblox.com/docs/reference/engine/datatypes/CFrame)): [Motor6D](https://create.roblox.com/docs/reference/engine/classes/Motor6D), [RBXScriptConnection](https://create.roblox.com/docs/reference/engine/datatypes/RBXScriptConnection)
 
 ## Properties
 
