@@ -67,7 +67,6 @@ function Reanim:MotorToLimb(part, limbName, offset0, offset1)
     newPart.Massless = true
     newPart.Parent = self.ghost
     
-    print("start motor")
     local motor = Instance.new("Motor6D")
     motor.C0 = offset0
     motor.C1 = offset1

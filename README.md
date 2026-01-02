@@ -21,8 +21,8 @@ local AccessoryReanimate = loadstring(game:HttpGet("https://raw.githubuserconten
 
 ### Method 2
 For Method 2, instead of using HTTP, you download the `AccessoryReanimate.lua` file of any version and put it inside your executor's workspace, (for example `storage/emulated/0/Delta/Workspace` if you use Delta.) and can be loaded with loadfile.
-```
+```lua
 local AccessoryReanimate = loadfile("AccessoryReanimate.lua")()
 ```
 
-## Getting Started
+Go to `/docs` to get started.
