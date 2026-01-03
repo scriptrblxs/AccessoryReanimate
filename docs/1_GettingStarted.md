@@ -29,7 +29,7 @@ This is the point we have to use accessories!
 `Controller:BuildBody(character)` goes through the children in the character model provided and checks for 1x1x2 size handle accessories.
 It also checks for accessories with a specific mesh id for the rig's head.
 You can use `Controller:WeldToLimb(part, limbName, offsetCFrame)` to weld a different part/accessory to the head if you don't have the accessory.
-More information on it in [the api ref.](api/Controller.md#weldtolimb)
+More information on it in [the api ref.](api/Controller.md#weldtolimbpartlimbnameoffset)
 
 ```lua
 Controller:BuildBody(game.Players.LocalPlayer.Character)
@@ -40,4 +40,4 @@ Controller:WeldToLimb(headPart, "Head", CFrame.new(0,0,0))
 
 You have now created an FE accessory-based rig!
 You can add new limbs by using `Controller:MotorToLimb(part, limbName, c0, c1)`.
-More information on it in [the api ref.](api/Controller.md#motortolimb)
+More information on it in [the api ref.](api/Controller.md#motortolimbpartlimbnamec0c1)
