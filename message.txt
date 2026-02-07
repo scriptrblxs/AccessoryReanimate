@@ -1,0 +1,94 @@
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+
+-- Shake State
+local shaking = false
+local amplitude = 0
+local frequency = 20
+local decayRate = 5
+local shakeStart = 0
+
+-- CONFIG
+local MAX_EFFECTIVE_DAMAGE = 50
+
+local function startShake(effectiveDamage)
+	shaking = true
+	shakeStart = tick()
+
+	-- Clamp final damage
+	effectiveDamage = math.clamp(effectiveDamage, 1, MAX_EFFECTIVE_DAMAGE)
+
+	-- More effective damage = stronger + slower
+	amplitude = math.clamp(effectiveDamage * 0.7, 1, 18)
+	frequency = math.clamp(28 - effectiveDamage * 0.4, 5, 28)
+	decayRate = math.clamp(7 - effectiveDamage * 0.08, 2, 7)
+end
+
+RunService.RenderStepped:Connect(function()
+	if not shaking then return end
+
+	local elapsed = tick() - shakeStart
+	local decay = math.exp(-decayRate * elapsed)
+	local currentAmplitude = amplitude * decay
+
+	if currentAmplitude < 0.05 then
+		camera.CFrame = CFrame.new(
+			camera.CFrame.Position,
+			camera.CFrame.Position + camera.CFrame.LookVector
+		)
+		shaking = false
+		return
+	end
+
+	local t = tick()
+	local angleX = math.sin(t * frequency) * currentAmplitude
+	local angleY = math.cos(t * frequency * 0.8) * currentAmplitude
+
+	local rotation = CFrame.Angles(
+		math.rad(angleX),
+		math.rad(angleY),
+		0
+	)
+
+	local camCF = CFrame.new(
+		camera.CFrame.Position,
+		camera.CFrame.Position + camera.CFrame.LookVector
+	)
+
+	camera.CFrame = camCF * rotation
+end)
+
+local function onCharacterAdded(character)
+	local humanoid = character:WaitForChild("Humanoid")
+	local lastHealth = humanoid.Health
+	local maxHealth = humanoid.MaxHealth
+
+	humanoid.HealthChanged:Connect(function(newHealth)
+		if newHealth < lastHealth then
+			local damage = lastHealth - newHealth
+
+			-- Health factor: full HP = 1, low HP = near 0
+			local healthFactor = math.clamp(newHealth / maxHealth, 0, 1)
+
+			-- Scale damage DOWN as health drops
+			local scaledDamage = damage * healthFactor
+
+			-- Cap at 50 effective damage
+			local effectiveDamage = math.min(scaledDamage, MAX_EFFECTIVE_DAMAGE)
+
+			-- Only shake if noticeable
+			if effectiveDamage > 0.5 then
+				startShake(effectiveDamage)
+			end
+		end
+		lastHealth = newHealth
+	end)
+end
+
+if player.Character then
+	onCharacterAdded(player.Character)
+end
+player.CharacterAdded:Connect(onCharacterAdded)
